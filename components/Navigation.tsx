@@ -113,7 +113,7 @@ const Navigation = () => {
               </Button>
 
               {isNotificationOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 glass-panel border border-glass-border/30 rounded-xl p-4 z-50 bg-surface/95 backdrop-blur-xl">
+                <div className="absolute -right-16 md:right-0 top-full mt-2 w-80 glass-panel border border-glass-border/30 rounded-xl p-4 z-50 bg-surface/95 backdrop-blur-xl">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-lg">Notifications</h3>
                     <span className="text-xs bg-neon-lime/20 text-neon-lime px-2 py-1 rounded-full">
