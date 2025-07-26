@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "OrbitSpace",
@@ -13,8 +14,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`antialiased`}>
+        {children}
+        <Toaster
+          toastOptions={{
+            style: {
+              borderRadius: "8px",
+              padding: "16px",
+              fontSize: "14px",
+              backgroundColor: "#1a1a1a",
+              color: "#f0f0f0",
+            },
+          }}
+        />
+      </body>
     </html>
   );
 }
