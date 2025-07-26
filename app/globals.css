@@ -3,3 +3,185 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+    --surface: 220 20% 12%;
+
+    --glass-primary: 220 25% 15%;
+    --glass-secondary: 220 20% 18%;
+    --glass-border: 220 30% 25%;
+
+    --neon-blue: 195 100% 50%;
+    --neon-lime: 84 100% 71%;
+    --neon-purple: 266 85% 78%;
+    --neon-pink: 330 85% 70%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 25% 8%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 25%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 266 85% 78%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 30% 25%;
+    --input: 220 25% 15%;
+    --ring: 195 100% 50%;
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(220, 25%, 8%) 0%, hsl(235, 30%, 12%) 50%, hsl(260, 25%, 10%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    --gradient-neon: linear-gradient(45deg, hsl(195, 100%, 50%) 0%, hsl(266, 85%, 78%) 100%);
+
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glow-neon-blue: 0 0 20px hsl(195, 100%, 50%, 0.3);
+    --glow-neon-purple: 0 0 20px hsl(266, 85%, 78%, 0.3);
+    --glow-neon-lime: 0 0 20px hsl(84, 100%, 71%, 0.3);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 30% 25%;
+    --sidebar-ring: 195 100% 50%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Space_Grotesk'];
+    background: var(--gradient-primary);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+
+  .glass-panel {
+    @apply backdrop-blur-xl border border-border/30 shadow-2xl;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glow-blue {
+    box-shadow: var(--glow-neon-blue);
+  }
+
+  .glow-purple {
+    box-shadow: var(--glow-neon-purple);
+  }
+
+  .glow-lime {
+    box-shadow: var(--glow-neon-lime);
+  }
+
+  .gradient-shimmer {
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glass), var(--glow-neon-blue);
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+
+    0%,
+    100% {
+      background-position: 200% 200%;
+    }
+
+    50% {
+      background-position: 0% 0%;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: var(--glow-neon-blue);
+    }
+
+    50% {
+      box-shadow: var(--glow-neon-purple);
+    }
+  }
+
+  .backdrop-blur-glass {
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .border-glass {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .bg-glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
